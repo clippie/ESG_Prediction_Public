@@ -41,7 +41,7 @@ Our target labels come from a Kaggle ESG ratings dataset aggregating scores from
 
 Score distributions show a characteristic bimodal structure in the environment pillar, with a cluster boundary near 500, which is a pattern documented in prior literature as a disclosure threshold artifact where companies crossing minimum reporting standards receive systematically higher scores. This theory was attempted to be tested using different sources of data. One of those tests was to examine EU ESG scores due to the mandandated reporting across all companies. Additionally pre-2020 scores where given the benift of the doubt on non-reported metrics which was changed in April 2020 to assign non-reported metrics with zero's instead. Both of these data sources were attempted to be investigated, however data was unaccesible.
 
-![ESG Score Distributions](../data/finbert_features/esg_score_distributions.png)
+![ESG Score Distributions](./images/esg_score_distributions.png)
 *Figure 1: **Environment Score** is bimodal with two distinct peaks around 200 to 220 and 500 to 520, suggesting two clusters of companies: low and high environmental performers with few in the middle. **Social Score** is more right-skewed with a sharp peak around 300, while also maintaining some bimodality. **Governance Score** is the most normally distributed of the three pillars, with a tight cluster around 280 to 310 and a mean of 278.8, with slight bimodality persisting. **Total Score** is also bimodal with peaks around 1050 to 1100. The bimodality remains withing industries and cannot be fully explained by data we were able to find.* 
 
 
@@ -165,7 +165,7 @@ The table below reports results from the held-out 20% test set (n = 67 companies
 
 <br>
 
-![R^2 Bar Chart](../data/finbert_features/final_model_r2_bar.png)
+![R^2 Bar Chart](./images/final_model_r2_bar.png)
 *Figure 2: Final model Test R² and 5-fold CV R² across all four ESG targets. Social achieves the strongest holdout result (Test R² = 0.215).*
 
 
@@ -175,7 +175,7 @@ The l1_ratio of 0.99 across nearly all targets means the signal is near lasso op
 
 ### Feature Importance
 
-![Non-zero Coefficients](../data/finbert_features/final_model_coefficients.png)
+![Non-zero Coefficients](./images/final_model_coefficients.png)
 *Figure 3: Top 20 non-zero ElasticNet coefficients by ESG target (standardized). Green bars indicate features that increase predicted scores; red bars indicate features that decrease predicted scores. Feature counts after L1 selection: Total Score = 20, Environment = 17, Social = 27, Governance = 2.*
 
 The L1 penalty drove 110–128 of the 130 input features to exactly zero, leaving a sparse, interpretable set of predictors per target. All four targets include `mode_prob_high` and company scale features, but the ESG-pillar-specific predictors differ substantially.
